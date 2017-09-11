@@ -22,9 +22,9 @@ $target = new \Lib\Target\XlsxTarget();
 
 foreach($jobs as $job){
 	$sql = sprintf($raw_sql, $job['site_id'], $time);
-	$data = $source->getData($sql);
+	$data = $source->getData($sql, \PDO::FETCH_NUM);
 	array_unshift($data, ["email", "sex", "reg_time"]);
-	$targetOpts = [ 'title' => $job['website'], 'filename' => sprintf('./output/%s_%s.xlsx', $job['website'], $date, $time) ];
+	$targetOpts = [ 'title' => $job['website'], 'filename' => sprintf('./output/xlsx/%s_%s.xlsx', $job['website'], $date, $time) ];
 	$target->writeData($data, $targetOpts);
 }
 

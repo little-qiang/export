@@ -19,9 +19,9 @@ class MysqlSource implements InterfaceSource {
 		}
 	}
 
-	public function getData($sql){
+	public function getData($sql, $fmt = \PDO::FETCH_ASSOC){
 		$stmt = $this->db->query($sql);
-		$rawRt = $stmt->fetchAll(\PDO::FETCH_NUM);
+		$rawRt = $stmt->fetchAll($fmt);
 		return $rawRt;
 	}
 }
