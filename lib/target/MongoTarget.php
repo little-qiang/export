@@ -13,10 +13,10 @@ class MongoTarget {
 		$this->dbname = $config['dbname'];
 	}
 
-	public function writeData($data) {
+	public function writeData($data, $table) {
 		$bulk            = new \MongoDB\Driver\BulkWrite;
 		$writeConcern    = new \MongoDB\Driver\WriteConcern(\MongoDB\Driver\WriteConcern::MAJORITY, 1000);
-		$collect         = sprintf('%s.shop_config', $this->dbname);
+		$collect         = sprintf('%s.%s', $this->dbname, $table);
 		foreach($data as $row){
 			$row['_id'] = new \MongoDB\BSON\ObjectID;
 			$bulk->insert($row);
