@@ -8,11 +8,11 @@ $date = '2017-07-20';
 $time = strtotime($date);
 $sql  = "SELECT * FROM shop_config;";
 
-$source = new \Lib\Source\MysqlSource($config['db']);
+$source = new \Lib\Source\MysqlSource($config['db1']);
 
 $data = $source->getData($sql);
 
-$target = new \Lib\Target\MongoTarget($config['mongo']);
+$target = new \Lib\Target\MongoTarget($config['mongo1']);
 $target->writeData($data);
 
 
