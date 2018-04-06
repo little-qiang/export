@@ -4,7 +4,7 @@ namespace Lib\Source;
 
 class MysqlSource implements InterfaceSource {
 
-	protected $db = null;
+	public $db = null;
 
 	public function __construct($dbConfig){
 		$dsn = sprintf('mysql:dbname=%s;host=%s', $dbConfig['dbname'], $dbConfig['host']);
